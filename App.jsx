@@ -1,9 +1,9 @@
 import { React } from 'react';
 
-import Main from './src/components/Main';
+import Speedometer from './src/components/SpeedometerGauge';
 
 const App = () => {
-  return <Main />;
+  return <Speedometer />;
 };
 
 export default App;
