@@ -14,7 +14,9 @@
     "expo": "~46.0.16",
     "expo-status-bar": "~1.4.0",
     "react": "18.0.0",
-    "react-native": "0.69.6"
+    "react-native": "0.69.6",
+    "react-native-network-bandwith-speed": "^3.0.0",
+    "react-native-speedometer": "^1.0.5"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
