@@ -1,9 +1,14 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { React } from 'react';
 
-import Speedometer from './src/components/SpeedometerGauge';
+import MyTabs from './src/MainStackNavigator';
 
 const App = () => {
-  return <Speedometer />;
+  return (
+    <NavigationContainer>
+      <MyTabs />
+    </NavigationContainer>
+  );
 };
 
 export default App;
