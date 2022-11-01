@@ -32,5 +32,6 @@ module.exports = {
     'simple-import-sort/exports': 'warn',
     'simple-import-sort/imports': 'warn',
     'unused-imports/no-unused-imports': 'warn',
+    'react/no-unstable-nested-components': 'off',
   },
 };
