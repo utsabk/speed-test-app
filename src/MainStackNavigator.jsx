@@ -19,7 +19,7 @@ const historyIcon = () => (
 
 const MyTabs = () => {
   return (
-    <Tab.Navigator initialRouteName="Test" screenOptions={{ headerTitleAlign: 'center' }}>
+    <Tab.Navigator initialRouteName="Test">
       <Tab.Screen
         name="Test"
         component={TestScreen}
