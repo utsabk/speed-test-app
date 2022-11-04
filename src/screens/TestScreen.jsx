@@ -2,9 +2,11 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useSelector } from 'react-redux';
 
-import Speedometer from '../components/SpeedometerGauge';
-import SpeedResult from '../components/SpeedResult';
+import DownloadGauge from '../components/DownloadGauge';
+import DownloadSpeedAvg from '../components/DownloadSpeedAvg';
 import StartButton from '../components/StartButton';
+import UploadGauge from '../components/UploadGauge';
+import UploadSpeedAvg from '../components/UploadSpeedAvg';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,16 +25,20 @@ const styles = StyleSheet.create({
 });
 
 const TestScreen = () => {
-  const speed = useSelector((state) => state.speed);
+  const downloadSpeed = useSelector((state) => state.download);
+  const uploadSpeed = useSelector((state) => state.upload);
 
+  console.log('test screen downloadSpeed', downloadSpeed);
+  console.log('test screen uploadSpeed', uploadSpeed);
+
+  const isDownloadGauge = downloadSpeed.active;
   return (
     <View style={[StyleSheet.absoluteFillObject, styles.container]}>
-      <Speedometer />
+      {isDownloadGauge ? <DownloadGauge /> : <UploadGauge />}
       <View style={styles.results}>
-        <SpeedResult icon="file-download" type="Download" speed={speed.downloadSpeed} />
-        <SpeedResult icon="file-upload" type="Upload" speed={speed.uploadSpeed} />
+        <DownloadSpeedAvg />
+        <UploadSpeedAvg />
       </View>
-
       <StartButton style={[styles.button]} />
     </View>
   );

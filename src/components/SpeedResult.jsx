@@ -38,7 +38,7 @@ const SpeedResult = ({ icon, type, speed }) => {
         <MaterialIcons name={icon} size={24} color={theme.colors.primary} />
         <Text style={styles.text}>{type}</Text>
       </View>
-      <Text style={styles.textSpeed}>{speed}</Text>
+      <Text style={styles.textSpeed}>{speed || '---'}</Text>
       <Text style={styles.text}>Mbps</Text>
     </View>
   );

@@ -11,6 +11,7 @@ const theme = {
     red: '#FF0000',
     white: '#FFFFFF',
     black: '#000000',
+    faded: '#77B2E6',
   },
   fontSizes: {
     small: 12,

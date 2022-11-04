@@ -2,7 +2,6 @@ import Constants from 'expo-constants';
 import React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import SpeedometerGauge from 'react-native-speedometer';
-import { useSelector } from 'react-redux';
 
 import theme from '../theme';
 
@@ -39,19 +38,14 @@ const labels = [
 ];
 const labelStyle = {
   color: theme.colors.secondary,
+  opacity: 0,
 };
-const Speedometer = () => {
-  const speed = useSelector((state) => state.speed);
-
-  const networkSpeed = 0;
-
-  console.log('speed', speed);
-
+const Speedometer = ({ speed }) => {
   return (
     <SafeAreaView style={styles.container}>
       <SpeedometerGauge
         defaultValue={5}
-        value={networkSpeed}
+        value={speed}
         size={300}
         easeDuration={1500}
         labels={labels}

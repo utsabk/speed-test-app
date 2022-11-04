@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 import { Pressable, StyleSheet, Text } from 'react-native';
 import { useDispatch } from 'react-redux';
 
-import { getDownloadSpeed, getUploadSpeed, resetStore } from '../store/actions/actions';
+import {
+  changeDownloadState,
+  changeUploadState,
+  getDownloadSpeed,
+  getUploadSpeed,
+  resetStore,
+} from '../store/actions/actions';
 import theme from '../theme';
 import { delay, timer } from '../utils';
 
@@ -36,15 +42,24 @@ const StartButton = ({ style }) => {
     dispatch(resetStore());
   };
 
+  const updateDownloadState = () => {
+    dispatch(changeDownloadState());
+  };
+
+  const updateUploadState = () => {
+    dispatch(changeUploadState());
+  };
+
   const handlePress = async () => {
     clearStore();
     setDisabled(true);
     timer(downloadSpeed);
     await delay(10000);
+    updateDownloadState();
     timer(uploadSpeed);
     await delay(10000);
     setDisabled(false);
-    // clearInterval(myTimer);
+    updateUploadState();
   };
   return (
     <Pressable
@@ -53,7 +68,7 @@ const StartButton = ({ style }) => {
       style={({ pressed }) => [
         {
           backgroundColor:
-            pressed || disabled ? 'rgb(119, 178, 230)' : theme.colors.secondary,
+            pressed || disabled ? theme.colors.faded : theme.colors.secondary,
         },
         ...style,
         styles.start,

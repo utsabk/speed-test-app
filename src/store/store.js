@@ -5,10 +5,11 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 
-import networkSpeedReducer from './reducers/reducer';
+import { downloadSpeedReducer, uploadSpeedReducer } from './reducers/reducer';
 
 const rootReducer = combineReducers({
-  speed: networkSpeedReducer,
+  download: downloadSpeedReducer,
+  upload: uploadSpeedReducer,
 });
 
 const configureStore = () => {

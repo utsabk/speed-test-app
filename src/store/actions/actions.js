@@ -1,5 +1,11 @@
 import { API_URL, customFetch } from '../../services/networkSpeed';
-import { GET_DOWNLOAD_SPEED, GET_UPLOAD_SPEED, RESET_ACTION } from '../types';
+import {
+  CHNAGE_DOWNLOAD_STATE,
+  CHNAGE_UPLOAD_STATE,
+  GET_DOWNLOAD_SPEED,
+  GET_UPLOAD_SPEED,
+  RESET_ACTION,
+} from '../types';
 
 export const setState = (action, result) => {
   return {
@@ -36,7 +42,19 @@ export const getUploadSpeed = () => {
 };
 
 export const resetStore = () => {
-  return async (dispatch) => {
+  return (dispatch) => {
     return dispatch(setState(RESET_ACTION, {}));
+  };
+};
+
+export const changeDownloadState = () => {
+  return (dispatch) => {
+    return dispatch(setState(CHNAGE_DOWNLOAD_STATE, {}));
+  };
+};
+
+export const changeUploadState = () => {
+  return (dispatch) => {
+    return dispatch(setState(CHNAGE_UPLOAD_STATE, {}));
   };
 };
