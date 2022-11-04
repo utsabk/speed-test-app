@@ -33,5 +33,6 @@ module.exports = {
     'simple-import-sort/imports': 'warn',
     'unused-imports/no-unused-imports': 'warn',
     'react/no-unstable-nested-components': 'off',
+    'default-param-last': 'off',
   },
 };
