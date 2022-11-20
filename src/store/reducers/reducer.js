@@ -1,21 +1,27 @@
 import {
-  CHNAGE_DOWNLOAD_STATE,
-  CHNAGE_UPLOAD_STATE,
+  ADD_TO_HISTORY_LIST,
+  CHANGE_DOWNLOAD_STATE,
+  CHANGE_UPLOAD_STATE,
   GET_DOWNLOAD_SPEED,
   GET_UPLOAD_SPEED,
+  REMOVE_FROM_HISTORY_LIST,
   RESET_ACTION,
 } from '../types';
 
 const initialStateDownload = {
   speed: '',
   speedList: [],
-  active: true,
+  active: false,
 };
 
 const initialStateUpload = {
   speed: '',
   speedList: [],
   active: false,
+};
+
+const initialSpeedTestList = {
+  results: [],
 };
 
 export const downloadSpeedReducer = (state = initialStateDownload, action) => {
@@ -31,7 +37,7 @@ export const downloadSpeedReducer = (state = initialStateDownload, action) => {
         ...initialStateDownload,
       };
 
-    case CHNAGE_DOWNLOAD_STATE:
+    case CHANGE_DOWNLOAD_STATE:
       return {
         ...state,
         active: !state.active,
@@ -56,10 +62,29 @@ export const uploadSpeedReducer = (state = initialStateUpload, action) => {
         ...initialStateUpload,
       };
 
-    case CHNAGE_UPLOAD_STATE:
+    case CHANGE_UPLOAD_STATE:
       return {
         ...state,
         active: !state.active,
+      };
+
+    default:
+      return state;
+  }
+};
+
+export const speedTestReducer = (state = initialSpeedTestList, action) => {
+  switch (action.type) {
+    case ADD_TO_HISTORY_LIST:
+      return {
+        ...state,
+        results: [...state.results, action.payload],
+      };
+
+    case REMOVE_FROM_HISTORY_LIST:
+      return {
+        ...state,
+        results: state.results.filter((item) => item !== action.payload),
       };
 
     default:

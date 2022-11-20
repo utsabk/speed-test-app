@@ -30,36 +30,28 @@ const StartButton = ({ style }) => {
   const [disabled, setDisabled] = useState(false);
   const dispatch = useDispatch();
 
-  const downloadSpeed = () => {
-    dispatch(getDownloadSpeed());
-  };
+  const downloadSpeed = () => dispatch(getDownloadSpeed());
 
-  const uploadSpeed = () => {
-    dispatch(getUploadSpeed());
-  };
+  const uploadSpeed = () => dispatch(getUploadSpeed());
 
-  const clearStore = () => {
-    dispatch(resetStore());
-  };
+  const clearStore = () => dispatch(resetStore());
 
-  const updateDownloadState = () => {
-    dispatch(changeDownloadState());
-  };
+  const updateDownloadState = () => dispatch(changeDownloadState());
 
-  const updateUploadState = () => {
-    dispatch(changeUploadState());
-  };
+  const updateUploadState = () => dispatch(changeUploadState());
 
   const handlePress = async () => {
     clearStore();
     setDisabled(true);
     timer(downloadSpeed);
+    updateDownloadState(); // set the state true
     await delay(10000);
-    updateDownloadState();
+    updateDownloadState(); // set the state false
+    updateUploadState(); // set the state true
     timer(uploadSpeed);
     await delay(10000);
     setDisabled(false);
-    updateUploadState();
+    updateUploadState(); // set the state false
   };
   return (
     <Pressable

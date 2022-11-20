@@ -2,11 +2,11 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useSelector } from 'react-redux';
 
+import AvgSpeed from '../components/AvgSpeed';
 import DownloadGauge from '../components/DownloadGauge';
-import DownloadSpeedAvg from '../components/DownloadSpeedAvg';
+import SaveButton from '../components/SaveButton';
 import StartButton from '../components/StartButton';
 import UploadGauge from '../components/UploadGauge';
-import UploadSpeedAvg from '../components/UploadSpeedAvg';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,9 +14,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'column',
   },
-  button: {
-    position: 'absolute',
-    bottom: '10%',
+  buttonWrapper: {
+    flexDirection: 'row',
+    marginBottom: 50,
+  },
+  testButton: {
+    margin: 5,
+  },
+  saveButton: {
+    margin: 5,
   },
   results: {
     flex: 1,
@@ -36,10 +42,12 @@ const TestScreen = () => {
     <View style={[StyleSheet.absoluteFillObject, styles.container]}>
       {isDownloadGauge ? <DownloadGauge /> : <UploadGauge />}
       <View style={styles.results}>
-        <DownloadSpeedAvg />
-        <UploadSpeedAvg />
+        <AvgSpeed />
       </View>
-      <StartButton style={[styles.button]} />
+      <View style={styles.buttonWrapper}>
+        <StartButton style={[styles.testButton]} />
+        <SaveButton style={[styles.saveButton]} />
+      </View>
     </View>
   );
 };

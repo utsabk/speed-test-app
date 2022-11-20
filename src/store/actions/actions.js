@@ -1,9 +1,11 @@
 import { API_URL, customFetch } from '../../services/networkSpeed';
 import {
-  CHNAGE_DOWNLOAD_STATE,
-  CHNAGE_UPLOAD_STATE,
+  ADD_TO_HISTORY_LIST,
+  CHANGE_DOWNLOAD_STATE,
+  CHANGE_UPLOAD_STATE,
   GET_DOWNLOAD_SPEED,
   GET_UPLOAD_SPEED,
+  REMOVE_FROM_HISTORY_LIST,
   RESET_ACTION,
 } from '../types';
 
@@ -49,12 +51,24 @@ export const resetStore = () => {
 
 export const changeDownloadState = () => {
   return (dispatch) => {
-    return dispatch(setState(CHNAGE_DOWNLOAD_STATE, {}));
+    return dispatch(setState(CHANGE_DOWNLOAD_STATE, {}));
   };
 };
 
 export const changeUploadState = () => {
   return (dispatch) => {
-    return dispatch(setState(CHNAGE_UPLOAD_STATE, {}));
+    return dispatch(setState(CHANGE_UPLOAD_STATE, {}));
+  };
+};
+
+export const addToHistoryList = (speed) => {
+  return (dispatch) => {
+    return dispatch(setState(ADD_TO_HISTORY_LIST, speed));
+  };
+};
+
+export const removeFromHistoryList = (speed) => {
+  return (dispatch) => {
+    return dispatch(setState(REMOVE_FROM_HISTORY_LIST, speed));
   };
 };
